@@ -45,6 +45,7 @@ export class GalaxysController extends BaseController {
     try {
       req.body.id = req.params.id
       let data = await galaxysService.edit(req.body)
+      res.send(data)
     } catch (error) {
       next(error)
     }
