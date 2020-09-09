@@ -1,4 +1,3 @@
-import ValueSchema from "../models/Value";
 import mongoose from "mongoose";
 import GalaxySchema from "../models/Galaxy";
 import MoonSchema from "../models/Moon";
@@ -9,7 +8,6 @@ class DbContext {
   Planets = mongoose.model("Planet", PlanetSchema)
   Moons = mongoose.model("Moon", MoonSchema)
   Galaxys = mongoose.model("Galaxy", GalaxySchema)
-  Values = mongoose.model("Value", ValueSchema);
 }
 
 export const dbContext = new DbContext();
