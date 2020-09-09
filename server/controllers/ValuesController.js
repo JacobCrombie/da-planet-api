@@ -1,6 +1,6 @@
 import express from "express";
 import BaseController from "../utils/BaseController";
-import { valuesService } from "../services/ValueService";
+import { valuesService } from "../services/ValuesService";
 
 export class ValuesController extends BaseController {
   constructor() {
