@@ -1,12 +1,12 @@
 import { dbContext } from "../db/DbContext";
 import { BadRequest } from "../utils/Errors";
 
-class StarsService{
+class StarsService {
   async find(query) {
-    return await dbContext.Stars.find(query)
+    return await dbContext.Stars.find(query).populate("galaxy", "name size")
   }
   async findById(id) {
-    let star = await dbContext.Stars.findById(id)
+    let star = await dbContext.Stars.findById(id).populate("galaxy", "name size")
     if (!star) {
       throw new BadRequest("invalid id")
     }
@@ -16,15 +16,15 @@ class StarsService{
     return await dbContext.Stars.create(star)
   }
   async edit(update) {
-    let updated = await dbContext.Stars.findOneAndUpdate({_id: update.id}, update, {new:true})
+    let updated = await dbContext.Stars.findOneAndUpdate({ _id: update.id }, update, { new: true })
     if (!updated) {
       throw new BadRequest("invalid id")
     }
     return updated
   }
   async delete(id) {
-    let deleted = await dbContext.Stars.findOneAndDelete({_id:id})
-    if (!deleted){
+    let deleted = await dbContext.Stars.findOneAndDelete({ _id: id })
+    if (!deleted) {
       throw new BadRequest("invalid id")
     }
   }
