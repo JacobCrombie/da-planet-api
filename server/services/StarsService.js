@@ -3,10 +3,10 @@ import { BadRequest } from "../utils/Errors";
 
 class StarsService {
   async find(query) {
-    return await dbContext.Stars.find(query).populate("galaxy", "name size")
+    return await dbContext.Stars.find(query).populate("galaxy")
   }
   async findById(id) {
-    let star = await dbContext.Stars.findById(id).populate("galaxy", "name size")
+    let star = await dbContext.Stars.findById(id).populate("galaxy")
     if (!star) {
       throw new BadRequest("invalid id")
     }
